@@ -14,7 +14,7 @@ app.get("/:count", async (req, res) => {
         hebrew: 'פרשת כי תשא'
     };
 
-    if(DEMO) {
+    if(process.env.DEMO) {
         dvarTorahUrl = `http://www.kaduri.net/?CategoryID=477&ArticleID=2564`;
     } else {
         parasha = await api.getParasha();
@@ -35,7 +35,7 @@ app.get("/:count/preview", async (req, res) => {
         hebrew: 'פרשת כי תשא'
     };
 
-    if(DEMO) {
+    if(process.env.DEMO) {
         dvarTorahUrl = `http://www.kaduri.net/?CategoryID=477&ArticleID=2564`;
     } else {
         parasha = await api.getParasha();

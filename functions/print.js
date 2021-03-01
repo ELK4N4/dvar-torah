@@ -20,7 +20,7 @@ function printViaMail(pdf) {
         subject: 'dvar torah',
         attachments: [
             {
-                filename: 'out.pdf',
+                filename: 'dvar-torah.pdf',
                 content: pdf,
                 encoding: 'base64'
             }
