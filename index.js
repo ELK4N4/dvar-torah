@@ -24,7 +24,7 @@ app.get("/:count", async (req, res) => {
     let dvarTorahPage = await api.getDvarTorahPage(dvarTorahUrl);
     let dvarTorahHtml = getDvarTorahHtml(parasha, dvarTorahPage, req.params.count);
 
-    await api.htmlToPdf(dvarTorahHtml);
+    await api.printToPdf(dvarTorahHtml);
 
     res.send(dvarTorahHtml);
 })

@@ -1,19 +1,24 @@
 const axios = require('axios');
-const fs = require("fs");
 const { printViaMail } = require('./print');
 require('dotenv').config();
-
 const apiKey = process.env.API_KEY;
-const htmlToPdf = async (dvarTorahHtml) => {
-    axios.post('https://api.html2pdf.app/v1/generate', {
-            html: dvarTorahHtml,
-            apiKey,
-        }, {responseType: 'arraybuffer'}).then((response) => {
-            fs.writeFileSync('out.pdf', response.data);
-            printViaMail();
-        }).catch((err) => {
-            console.log(err.message);
-    });
+
+const printToPdf = async (dvarTorahHtml) => {
+    try {
+        let response = await axios.post('https://api.html2pdf.app/v1/generate', {
+                html: dvarTorahHtml,
+                apiKey,
+            },
+            {
+                responseType: 'arraybuffer'
+            }
+        );
+        console.log("Got PDF file")
+        printViaMail(response.data);
+    }
+    catch (err) {
+        console.log(err.message);
+    };
 }
 
 const getParasha = async () =>  {
@@ -39,4 +44,4 @@ const getDvarTorahPage = async (dvarTorahUrl) =>  {
 exports.getParasha = getParasha;
 exports.getDvarTorahPage = getDvarTorahPage;
 exports.getDvarTorahUrl = getDvarTorahUrl;
-exports.htmlToPdf = htmlToPdf;
+exports.printToPdf = printToPdf;

@@ -13,8 +13,7 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-function printViaMail() {
-    console.log('PDF saved');
+function printViaMail(pdf) {
     var mailOptions = {
         from: mail,
         to: mailto,
@@ -22,7 +21,8 @@ function printViaMail() {
         attachments: [
             {
                 filename: 'out.pdf',
-                content: fs.createReadStream('out.pdf')
+                content: pdf,
+                encoding: 'base64'
             }
         ]
     };
