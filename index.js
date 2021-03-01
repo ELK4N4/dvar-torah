@@ -27,7 +27,7 @@ app.get("/:count", async (req, res) => {
     res.send(dvarTorahHtml);
 })
 
-let PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 /* Server Listening */
 app.listen(PORT, '0.0.0.0', () => {
