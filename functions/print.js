@@ -1,4 +1,3 @@
-const fs = require("fs");
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 const mail = process.env.MAIL;
