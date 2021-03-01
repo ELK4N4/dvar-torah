@@ -2,32 +2,17 @@ const axios = require('axios');
 const request = require('request');
 const fs = require("fs");
 const { printViaMail } = require('./print');
+require('dotenv').config();
 
 const apiKey = process.env.API_KEY;
-    
 const htmlToPdf = async (dvarTorahHtml) => {
-    var opts = {
-        uri: 'https://api.sejda.com/v2/html-pdf',
-        headers: {
-            'Authorization' : 'Token: ' + apiKey,
-        },
-        json: {
-            'htmlCode': dvarTorahHtml,
-            'viewportWidth': 1200
-        }
-    };
-
-    request.post(opts)
-        .on('error', function(err){
-            return console.error(err);
-        })
-        .on('response', function(response) {
-            if (response.statusCode === 200) {
-                response.pipe(fs.createWriteStream('out.pdf'))
-                    .on('finish', printViaMail);
-            } else {
-                return console.error('Got code: ' + response.statusCode);
-            }
+    axios.post('https://api.html2pdf.app/v1/generate', {
+            html: dvarTorahHtml,
+            apiKey,
+        }, {responseType: 'arraybuffer'}).then((response) => {
+            fs.writeFileSync('out.pdf', response.data);
+        }).catch((err) => {
+            console.log(err.message);
     });
 }
 

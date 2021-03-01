@@ -46,23 +46,19 @@ function vortsToHtmlBuilder(parasha, vorts, vortsCount){
     const { window } = new JSDOM(`
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    </head>
-    <body style="padding: 140px; text-align: right; font-weight: bold; font: 16px 'Arimo', sans-serif;">
+    <body style="padding: 140px; text-align: right; font: 12px 'Arial', sans-serif;">
         <p dir="rtl">בס"ד</p>
-        <h1 dir="rtl" style="text-align: center; font-family: 'Arimo', sans-serif;"><u>דבר תורה - ${parasha.hebrew}</u></h1>
-        <p dir="rtl" style="font-size: 16px; font-family: 'Arimo', sans-serif;">שבת שלום!</p>
+        <h1 dir="rtl" style="text-align: center; font-size: 20px;"><strong><u>דבר תורה - ${parasha.hebrew}</u></strong></h1>
+        <p dir="rtl" style="font-size: 12px; font-family: 'Arial', sans-serif;">שבת שלום!</p>
     </body>
 </html>
     `);
     const $ = require( "jquery" )( window );
     for (let i = 0; i < vortsCount; i++) {
         let vort = vorts[i];
-        $("h1").append(`<p dir="rtl" style="font-family: 'Arimo', sans-serif; text-align: right; font-size: 21px;"><u>${vort.title}</u></p>`);
+        $("h1").append(`<p dir="rtl" style="text-align: right; font-size: 14px;"><u><strong>${vort.title}</strong></u></p>`);
         vort.paras.forEach(para => {
-            $("h1").append(`<p dir="rtl" style="font-family: 'Arimo', sans-serif; text-align: right; font-size: 21px;">${para}</p>`);
+            $("h1").append(`<p dir="rtl" style="text-align: right; font-size: 14px;"><strong>${para}</p>`);
         })
     }
     return $('html').prop('outerHTML');;
