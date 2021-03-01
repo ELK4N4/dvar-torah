@@ -6,8 +6,6 @@ require('dotenv').config();
 
 app.get('/favicon.ico', (req, res) => res.status(204));
 
-const DEMO = true;
-
 app.get("/:count", async (req, res) => {
     let dvarTorahUrl;
     let parasha = {
