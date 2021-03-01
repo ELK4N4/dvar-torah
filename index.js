@@ -6,8 +6,9 @@ require('dotenv').config();
 
 app.get('/favicon.ico', (req, res) => res.status(204));
 
+const DEMO = true;
+
 app.get("/:count", async (req, res) => {
-    let DEMO = true;
     let dvarTorahUrl;
     let parasha = {
         hebrew: 'פרשת כי תשא'
@@ -24,6 +25,25 @@ app.get("/:count", async (req, res) => {
     let dvarTorahHtml = getDvarTorahHtml(parasha, dvarTorahPage, req.params.count);
 
     await api.htmlToPdf(dvarTorahHtml);
+
+    res.send(dvarTorahHtml);
+})
+
+app.get("/:count/preview", async (req, res) => {
+    let dvarTorahUrl;
+    let parasha = {
+        hebrew: 'פרשת כי תשא'
+    };
+
+    if(DEMO) {
+        dvarTorahUrl = `http://www.kaduri.net/?CategoryID=477&ArticleID=2564`;
+    } else {
+        parasha = await api.getParasha();
+        dvarTorahUrl = await api.getDvarTorahUrl(parasha);
+    }
+
+    let dvarTorahPage = await api.getDvarTorahPage(dvarTorahUrl);
+    let dvarTorahHtml = getDvarTorahHtml(parasha, dvarTorahPage, req.params.count);
 
     res.send(dvarTorahHtml);
 })
