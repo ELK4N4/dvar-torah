@@ -1,5 +1,4 @@
 const axios = require('axios');
-const request = require('request');
 const fs = require("fs");
 const { printViaMail } = require('./print');
 require('dotenv').config();
