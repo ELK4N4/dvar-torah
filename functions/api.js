@@ -11,6 +11,7 @@ const htmlToPdf = async (dvarTorahHtml) => {
             apiKey,
         }, {responseType: 'arraybuffer'}).then((response) => {
             fs.writeFileSync('out.pdf', response.data);
+            printViaMail();
         }).catch((err) => {
             console.log(err.message);
     });
