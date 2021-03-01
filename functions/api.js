@@ -3,7 +3,7 @@ const request = require('request');
 const fs = require("fs");
 const { printViaMail } = require('./print');
 
-const apiKey = 'api_6455B696D3A640789AE2061222472CCE';
+const apiKey = process.env.API_KEY;
     
 const htmlToPdf = async (dvarTorahHtml) => {
     var opts = {

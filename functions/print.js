@@ -1,18 +1,22 @@
 const fs = require("fs");
 const nodemailer = require('nodemailer');
+const mail = process.env.MAIL;
+const pass = process.env.PASS;
+const mailto = process.env.MAILTO;
+
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'dvar.torah.online@gmail.com',
-      pass: 'elkana321'
+      user: mail,
+      pass: pass
     }
 });
 
 function printViaMail() {
     console.log('PDF saved');
     var mailOptions = {
-        from: 'dvar.torah.online@gmail.com',
-        to: 'elkana.hendler@gmail.com',
+        from: mail,
+        to: mailto,
         subject: 'dvar torah',
         attachments: [
             {

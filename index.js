@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const { getDvarTorahHtml } = require('./functions/html-builder');
 const api = require('./functions/api');
+require('dotenv').config();
 
 app.get('/favicon.ico', (req, res) => res.status(204));
 
