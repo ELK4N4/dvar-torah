@@ -13,7 +13,7 @@ const printToPdf = async (dvarTorahHtml) => {
                 responseType: 'arraybuffer'
             }
         );
-        console.log("Got PDF file")
+        console.log("Got PDF file");
         printViaMail(response.data);
     }
     catch (err) {
@@ -38,8 +38,6 @@ const getDvarTorahPage = async (dvarTorahUrl) =>  {
     let response = await axios.get(dvarTorahUrl);
     return response.data;
 }
-
-
 
 exports.getParasha = getParasha;
 exports.getDvarTorahPage = getDvarTorahPage;

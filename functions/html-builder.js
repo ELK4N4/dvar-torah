@@ -42,7 +42,7 @@ const vortsCount = (reqVortsCount, vorts) => {
     return count;
 }
 
-function vortsToHtmlBuilder(parasha, vorts, vortsCount){
+function vortsToHtml(parasha, vorts, vortsCount){
     const { window } = new JSDOM(`
 <!DOCTYPE html>
 <html>
@@ -68,7 +68,7 @@ const getDvarTorahHtml = (parasha, dvarTorahPage, reqVortsCount) => {
     let vorts = getVorts(dvarTorahPage);
     sortVorts(vorts);
     let count = vortsCount(reqVortsCount, vorts);
-    return vortsToHtmlBuilder(parasha, vorts, count);
+    return vortsToHtml(parasha, vorts, count);
 }
 
 exports.getDvarTorahHtml = getDvarTorahHtml;
