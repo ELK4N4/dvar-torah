@@ -28,7 +28,7 @@ const getParasha = async () =>  {
 }
 
 const getDvarTorahUrl = async (parasha) =>  {
-    let apiSearchUrl = `http://api.serpstack.com/search?access_key=3584e56bfd3f273cf8bfe231a6a5c728&query=דבר תורה קצר לשולחן השבת, פרשת "${parasha.hebrew.replace('פרשת ','')}" - כדורי.נט site:http://www.kaduri.net/`
+    let apiSearchUrl = `http://api.serpstack.com/search?access_key=3584e56bfd3f273cf8bfe231a6a5c728&query=דבר תורה קצר לשולחן השבת, פרשת ${parasha.hebrew.replace('פרשת ','')} - כדורי.נט site:http://www.kaduri.net/`
     let searchList = await axios.get(encodeURI(apiSearchUrl));
     let dvarTorahUrl = searchList.data.organic_results[0].url;
     return dvarTorahUrl;
