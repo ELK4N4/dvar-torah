@@ -1,48 +1,20 @@
 const express = require("express");
 const app = express();
-const { getDvarTorahHtml } = require('./functions/html-builder');
 const api = require('./functions/api');
+const { generateDvarTorah } = require('./functions/generator');
 require('dotenv').config();
+
 
 app.get('/favicon.ico', (req, res) => res.status(204));
 
 app.get("/:count", async (req, res) => {
-    let dvarTorahUrl;
-    let parasha = {
-        hebrew: 'פרשת כי תשא'
-    };
-
-    if(process.env.DEMO === 'true') {
-        dvarTorahUrl = `http://www.kaduri.net/?CategoryID=477&ArticleID=2564`;
-    } else {
-        parasha = await api.getParasha();
-        dvarTorahUrl = await api.getDvarTorahUrl(parasha);
-    }
-
-    let dvarTorahPage = await api.getDvarTorahPage(dvarTorahUrl);
-    let dvarTorahHtml = getDvarTorahHtml(parasha, dvarTorahPage, req.params.count);
-
+    const dvarTorahHtml = await generateDvarTorah(req.params.count);
     await api.printToPdf(dvarTorahHtml);
-
     res.send(dvarTorahHtml);
 })
 
 app.get("/:count/preview", async (req, res) => {
-    let dvarTorahUrl;
-    let parasha = {
-        hebrew: 'פרשת כי תשא'
-    };
-
-    if(process.env.DEMO === 'true') {
-        dvarTorahUrl = `http://www.kaduri.net/?CategoryID=477&ArticleID=2564`;
-    } else {
-        parasha = await api.getParasha();
-        dvarTorahUrl = await api.getDvarTorahUrl(parasha);
-    }
-
-    let dvarTorahPage = await api.getDvarTorahPage(dvarTorahUrl);
-    let dvarTorahHtml = getDvarTorahHtml(parasha, dvarTorahPage, req.params.count);
-
+    const dvarTorahHtml = await generateDvarTorah(req.params.count);
     res.send(dvarTorahHtml);
 })
 
