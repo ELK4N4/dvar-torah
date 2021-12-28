@@ -44,4 +44,4 @@ The cron Expression is `00 13 * * FRI`
 * There is a seperated route that give the option to see a pewview of the Dvar Torah that the API is going to print before printing.
 
 ## Contributor
-[Elkana Hendler](https://github.com/ELK4N4)
+Elkana Hendler - [ELK4N4](https://github.com/ELK4N4)
