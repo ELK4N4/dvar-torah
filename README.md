@@ -41,4 +41,5 @@ The cron Expression is `00 13 * * FRI`
 #### 1) Users can decide how many Vorts they want in the page just by writing in the api url the Vorts number. <br/>
 #### 2) The Vorts are sorted<br/>
 #### 3) There is a check if the Dvar Torah is not too long, for a case that the API got a wrong page and could print a lot of papers for nothing<br/>
+#### 4) There is a seperated route that give the option to see a pewview of the Dvar Torah that the API is going to print before printing<br/>
 ## Problem sovling
