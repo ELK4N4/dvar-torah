@@ -38,8 +38,8 @@ The webhook site that I use is https://pipedream.com/.<br/>
 The cron Expression is `00 13 * * FRI`
 
 ## Features
-#### * Users can decide how many Vorts they want in the page just by writing in the api url the Vorts number. <br/>
-#### * The Vorts are sorted<br/>
-#### * There is a check if the Dvar Torah is not too long, for a case that the API got a wrong page and could print a lot of papers for nothing<br/>
-#### * There is a seperated route that give the option to see a pewview of the Dvar Torah that the API is going to print before printing<br/>
+#### - Users can decide how many Vorts they want in the page just by writing in the api url the Vorts number. <br/>
+#### - The Vorts are sorted<br/>
+#### - There is a check if the Dvar Torah is not too long, for a case that the API got a wrong page and could print a lot of papers for nothing<br/>
+#### - There is a seperated route that give the option to see a pewview of the Dvar Torah that the API is going to print before printing<br/>
 ## Problem sovling
